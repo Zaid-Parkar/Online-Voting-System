@@ -71,27 +71,22 @@
 				   }else{
 					?>
 					<div class="d-flex justify-content-center form_container">
-						<form>
+						<form method="POST">
 							<div class="input-group mb-3">
 								<div class="input-group-append">
 									<span class="input-group-text"><i class="fas fa-user"></i></span>
 								</div>
-								<input type="text" name="" class="form-control input_user" value="" placeholder="username">
+								<input type="text" name="Contact_no" class="form-control input_user"  placeholder="Contact Number" require/>
 							</div>
 							<div class="input-group mb-2">
 								<div class="input-group-append">
 									<span class="input-group-text"><i class="fas fa-key"></i></span>
 								</div>
-								<input type="password" name="" class="form-control input_pass" value="" placeholder="password">
+								<input type="password" name="password" class="form-control input_pass"  placeholder="password" required/>
 							</div>
-							<div class="form-group">
-								<div class="custom-control custom-checkbox">
-									<input type="checkbox" class="custom-control-input" id="customControlInline">
-									<label class="custom-control-label" for="customControlInline">Remember me</label>
-								</div>
-							</div>
+							
 							<div class="d-flex justify-content-center mt-3 login_container">
-								<button type="button" name="button" class="btn login_btn">Login</button>
+								<button type="submit" name="loginBtn" class="btn login_btn">Login</button>
 							</div>
 						</form>
 					</div>
@@ -107,7 +102,39 @@
 					<?php
 				   }
 				?>
+<?php
+if(isset($_GET['registered']))
+{
+?>
+<span class="bg-white text-success text-center my-3"> Your account has been created successfully</span>
 
+<?php
+
+} else if(isset($_GET['invalid']))
+{
+	?>
+	<span class="bg-white text-danger text-center my-3"> Password mismatched,Please try again</span>
+	
+	<?php
+	
+	}
+	else if(isset($_GET['not_registered']))
+	{
+		?>
+		<span class="bg-white text-warning text-center my-3"> Sorry,You are not registered</span>
+		
+		<?php
+		
+		}
+		else if(isset($_GET['invalid_access']))
+		{
+			?>
+			<span class="bg-white text-danger text-center my-3"> Invalid username or password</span>
+			
+			<?php
+			
+			}
+?>
 
 				</div>
 			</div>
@@ -129,8 +156,8 @@ if(isset($_POST['sign_up_btn']))
 {
 $su_username=mysqli_real_escape_string($db,$_POST['su_username']);
 $su_contact_no=mysqli_real_escape_string($db,$_POST['su_contact_no']);
-$su_password=mysqli_real_escape_string($db,$_POST['su_password']);
-$su_confirm_password=mysqli_real_escape_string($db,$_POST['su_confirm_password']);
+$su_password=mysqli_real_escape_string($db,sha1($_POST['su_password']));
+$su_confirm_password=mysqli_real_escape_string($db,sha1($_POST['su_confirm_password']));
 $user_role="Voter";
 
 
@@ -151,5 +178,48 @@ or die(mysqli_error($db));
 
 <?php
 }
+}else if(isset($_POST['loginBtn']))
+{
+	$Contact_no=mysqli_real_escape_string($db,$_POST['Contact_no']);
+	$password=mysqli_real_escape_string($db,sha1($_POST['password']));
+
+//query
+$fetchingData =mysqli_query($db, "SELECT * FROM users WHERE Contact_no = '". $Contact_no ."'") or die(mysqli_error($db));
+
+
+if(mysqli_num_rows($fetchingData) >0 )
+{
+$data = mysqli_fetch_assoc($fetchingData);
+
+     if($Contact_no==$data['Contact_no'] and $password==$data['password'])
+	 {session_start();
+		$_SESSION['user_role']= $data['user_role'];
+		$_SESSION['username']= $data['username'];
+         
+		if($data['user_role']== "Admin")
+		{
+			?>
+<script> location.assign("admin/index.php"); </script>
+
+<?php
+		}else{
+			?>
+<script> location.assign("voters/index.php"); </script>
+
+<?php
+		}
+	 }else{
+		?>
+<script> location.assign("index.php?invalid_access=1"); </script>
+
+<?php
+	 }
+}else{
+	?>
+<script> location.assign("index.php?sign-up=1&not_registered=1"); </script>
+
+<?php
+}
+
 }
 ?>
