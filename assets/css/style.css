@@ -1,0 +1,6 @@
+.candidate_photo {
+    width: 80px;
+    height: 80px;
+    border: 2px solid #67C232;
+    border-radius: 100%;
+}
