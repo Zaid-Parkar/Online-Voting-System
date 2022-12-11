@@ -21,12 +21,12 @@
                         <table class="table">
                             <thead>
                                 <tr>
-                                    <th colspan="4" class="bg-green text-white"><h5> ELECTION TOPIC: <?php echo strtoupper($election_topic); ?></h5></th>
+                                    <th colspan="4" class="bg-dark text-white"><h5> ELECTION TOPIC: <?php echo strtoupper($election_topic); ?></h5></th>
                                 </tr>
                                 <tr>
                                     <th> Photo </th>
                                     <th> Candidate Details </th>
-                                    <th> Number of Votes </th>
+                                    <th> N of Votes </th>
                                     <th> Action </th>
                                 </tr>
                             </thead>
