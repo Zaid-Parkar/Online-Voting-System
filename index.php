@@ -199,7 +199,7 @@ $data = mysqli_fetch_assoc($fetchingData);
 		if($data['user_role']== "Admin")
 		{$_SESSION['key']="AdminKey";
 			?>
-<script> location.assign("admin/index.php"); </script>
+<script> location.assign("admin/index.php?homepage=1"); </script>
 
 <?php
 		}else{$_SESSION['key']="VotersKey";
