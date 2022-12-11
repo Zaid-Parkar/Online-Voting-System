@@ -1,3 +1,17 @@
+<?php
+if(isset($_GET['added' ]))
+{
+    ?>
+<div class= "alert alert-success my-3" role= "alert">
+Election has been added successfully.
+</div>
+
+<?php
+}
+?>
+
+
+
 <div class="row my-3">
     <div class="col-4">
         <h3>Add New Election</h3>
@@ -35,19 +49,52 @@
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <th scope="row">1</th>
-                    <td>Mark</td>
-                    <td>Otto</td>
-                    <td>@mdo</td>
-                </tr>
-              
+                
+                <?php $fetchingData = mysqli_query($db, "SELECT * FROM elections ") or die(mysqli_error($db));
+                $isAnyElectionAdded = mysqli_num_rows($fetchingData);
+              if ($isAnyElectionAdded >0)
+                    {
+
+                        $sno=1;
+                       while($row = mysqli_fetch_assoc($fetchingData))
+{
+?>
+<tr>
+    <td><?php echo $sno++; ?></td>
+    <td><?php echo $row['election_topic']; ?></td>
+    <td><?php echo $row['no_of_candidate']; ?></td>
+    <td><?php echo $row['s_date']; ?></td>
+    <td><?php echo $row['ending_date']; ?></td>
+    <td><?php echo $row['status']; ?></td>
+    <td>
+
+            <a href="#" class="btn btn- sm btn-warning"> Edit </a>
+            <a href="#" class="btn btn- sm btn-danger"> Delete </a>
+
+     </td>
+</tr>
+
+<?php
+}
+                    }
+                   else{
+                    ?>
+                    <tr>
+                    <td colspan="7"> No any election is added yet. </td>
+                    </tr>
+                   <?php
+                   }
+              ?>
             </tbody>
         </table>
     </div>
 </div>
 
 <?php
+
+
+
+
 
 if(isset($_POST['addElectionBtn']))
 {
@@ -61,8 +108,25 @@ $inserted_on =date("Y-m-d");
 $date1=date_create ($inserted_on);
 $date2=date_create ($s_date) ;
 $diff=date_diff( $date1, $date2);
-echo $diff->format ("%R%a days ") ;
 
+
+
+if($diff->format ("%R%a")> 0)
+{
+    $status="InActive";
+}else {
+    $status= "Active";
+    }
+
+
+//quey 
+mysqli_query($db,"INSERT INTO `elections` ( `election_topic`, `no_of_candidate`, `s_date`, `ending_date`, `status`, `inserted_by`, `inserted_on`) 
+VALUES ( '$election_topic', '$number_of_candidates ', '$s_date', '$ending_date',  '$status', '$inserted_by', '$inserted_on')");
+
+?>
+
+<script> location.assign("index.php?addElectionPage=1&added=1") ; </script>
+
+<?php 
 
 }
-?>
