@@ -1,6 +1,6 @@
 <?php 
     session_start();
-    require_once("../admin/inc/config.php");
+    require_once("../admin/config.php");
 
     if($_SESSION['key'] != "VotersKey")
     {
@@ -9,28 +9,27 @@
     }
 ?>
 
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Voters Panel - Online Voting System</title>
-    <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
-    <link rel="stylesheet" href="../assets/css/style.css">
+    <title>Admin panel</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+		<link rel="stylesheet" href="./assets/css/login.css">
+		<link rel="stylesheet" href="../assets/css/style.css">
 </head>
-<body>
+<body >
     
-    <div class="container-fluid">
-        <div class="row bg-black text-white">
-            <div class="col-1"> 
-                <img src="../assets/images/logo.gif" width="80px"/>
-            </div>
-            <div class="col-11 my-auto">
-                <h3> ONLINE VOTING SYSTEM  - <small> Welcome  <?php echo $_SESSION['username']; ?></small> </h3>
-            </div>
-        </div>
-
+<!-- Image and text -->
+<nav class="navbar navbar-dark bg-dark">
+  <a class="navbar-brand" href="#">
+    <img src="../assets/images/logo.gif" width="30" height="30" class="d-inline-block align-top" alt="">
+    Welcome to online voting system
+  </a>
+</nav>
  
 
 

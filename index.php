@@ -195,7 +195,8 @@ $data = mysqli_fetch_assoc($fetchingData);
 	 {session_start();
 		$_SESSION['user_role']= $data['user_role'];
 		$_SESSION['username']= $data['username'];
-		
+		$_SESSION['user_id']= $data['id'];
+
 		if($data['user_role']== "Admin")
 		{$_SESSION['key']="AdminKey";
 			?>
