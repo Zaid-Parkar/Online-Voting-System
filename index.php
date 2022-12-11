@@ -195,14 +195,14 @@ $data = mysqli_fetch_assoc($fetchingData);
 	 {session_start();
 		$_SESSION['user_role']= $data['user_role'];
 		$_SESSION['username']= $data['username'];
-         
+		
 		if($data['user_role']== "Admin")
-		{
+		{$_SESSION['key']="AdminKey";
 			?>
 <script> location.assign("admin/index.php"); </script>
 
 <?php
-		}else{
+		}else{$_SESSION['key']="VotersKey";
 			?>
 <script> location.assign("voters/index.php"); </script>
 
