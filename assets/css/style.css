@@ -8,4 +8,12 @@
 
 body{
     background-color: white !important;
+    /* width: 99% !important;
+    margin: auto;
+    padding: 2%; */
+}
+
+.av-body{
+    padding: 3% !important;
+    width: 80% !important;
 }

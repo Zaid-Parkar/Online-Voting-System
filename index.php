@@ -1,5 +1,50 @@
 <!-- //http://localhost/Online-Voting-System/index.php -->
 
+<?php 
+    require_once("admin/config.php");
+
+    $fetchingElections = mysqli_query($db, "SELECT * FROM elections") OR die(mysqli_error($db));
+    while($data = mysqli_fetch_assoc($fetchingElections))
+    {
+        $stating_date = $data['s_date'];
+        $ending_date = $data['ending_date'];
+        $curr_date = date("Y-m-d");
+        $election_id = $data['id'];
+        $status = $data['status'];
+
+        // Active = Expire = Ending Date
+        // InActive = Active = Starting Date
+
+        if($status == "Active")
+        {
+            $date1=date_create($curr_date);
+            $date2=date_create($ending_date);
+            $diff=date_diff($date1,$date2);
+            
+            if((int)$diff->format("%R%a") < 0)
+            {
+                // Update! 
+                mysqli_query($db, "UPDATE elections SET status = 'Expired' WHERE id = '". $election_id ."'") OR die(mysqli_error($db));
+            }
+        }else if($status == "InActive")
+        {
+            $date1=date_create($curr_date);
+            $date2=date_create($stating_date);
+            $diff=date_diff($date1,$date2);
+            
+
+            if((int)$diff->format("%R%a") <= 0)
+            {
+                // Update! 
+                mysqli_query($db, "UPDATE elections SET status = 'Active' WHERE id = '". $election_id ."'") OR die(mysqli_error($db));
+            }
+        }
+        
+
+    }
+?>
+
+
 <!DOCTYPE html>
 <html>
 
