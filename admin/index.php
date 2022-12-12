@@ -20,6 +20,9 @@ else if(isset($_GET['addCandidatePage']))
 else if(isset($_GET['logoutpage']))
 {
     require_once("logout.php") ;
+}else if(isset($_GET['viewResult']))
+{
+    require_once("viewResults.php");
 }
 
 
