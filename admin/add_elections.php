@@ -1,13 +1,24 @@
-<?php
-if(isset($_GET['added' ]))
-{
-    ?>
-<div class= "alert alert-success my-3" role= "alert">
-Election has been added successfully.
-</div>
 
+<script src="assets/js/jquery.min.js"></script>
+<?php 
+    if(isset($_GET['added']))
+    {
+?>
+        <div class="alert alert-success my-3" role="alert">
+            Election has been added successfully.
+        </div>
+<?php 
+    }else if(isset($_GET['delete_id']))
+    {
+        $d_id = $_GET['delete_id'];
+        mysqli_query($db, "DELETE FROM elections WHERE id = '". $d_id ."'") OR die(mysqli_error($db));
+?>
+       <div class="alert alert-danger my-3" role="alert">
+            Election has been deleted successfully!
+        </div>
 <?php
-}
+
+    }
 ?>
 
 
@@ -58,6 +69,7 @@ Election has been added successfully.
                         $sno=1;
                        while($row = mysqli_fetch_assoc($fetchingData))
 {
+    $election_id = $row['id'];
 ?>
 <tr>
     <td><?php echo $sno++; ?></td>
@@ -69,8 +81,7 @@ Election has been added successfully.
     <td>
 
             <a href="#" class="btn btn- sm btn-warning"> Edit </a>
-            <a href="#" class="btn btn- sm btn-danger"> Delete </a>
-
+            <button class="btn btn-sm btn-danger" onclick="DeleteData(<?php echo $election_id; ?>)"> Delete </button>
      </td>
 </tr>
 
@@ -90,11 +101,21 @@ Election has been added successfully.
     </div>
 </div>
 
+
+<script>
+    const DeleteData = (e_id) => 
+    {
+        let c = confirm("Are you really want to delete it?");
+
+        if(c == true)
+        {
+            location.assign("index.php?addElectionPage=1&delete_id=" + e_id);
+        }
+    }
+</script>
+
+
 <?php
-
-
-
-
 
 if(isset($_POST['addElectionBtn']))
 {
@@ -111,7 +132,7 @@ $diff=date_diff( $date1, $date2);
 
 
 
-if($diff->format ("%R%a")> 0)
+if ((int)$diff->format ("%R%a")> 0)
 {
     $status="InActive";
 }else {
@@ -130,3 +151,4 @@ VALUES ( '$election_topic', '$number_of_candidates ', '$s_date', '$ending_date',
 <?php 
 
 }
+?>
