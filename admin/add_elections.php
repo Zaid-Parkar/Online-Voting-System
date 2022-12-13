@@ -23,7 +23,7 @@
 
 
 
-<div class="row my-3">
+<div class="row my-3 mx-2">
     <div class="col-4">
         <h3>Add New Election</h3>
         <form method="POST">
@@ -43,7 +43,7 @@
             <input type="submit" value="Add Election" name="addElectionBtn" class="btn btn-success my-3" />
         </form>
     </div>
-
+   
     <div class="col -8">
         <h3>Upcoming Elections </h3>
 
