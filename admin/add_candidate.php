@@ -43,8 +43,8 @@ echo '</style>'
 ?>
 
 
-<div class="row my-3">
-    <div class="col-4">
+<div class="row my-3 mx-2">
+    <div class="col-4 ">
         <h3>Add New Candidates</h3>
         <form method="POST" enctype="multipart/form-data">
             <div class="form-group">
@@ -80,13 +80,13 @@ echo '</style>'
                     ?>
                 </select>
             </div>
-            <div class="form-group">
+            <div class="form-group my-3">
                 <input type="text" name="candidate_name" placeholder="Candidate Name" class="form-control" required />
             </div>
-            <div class="form-group">
+            <div class="form-group my-3">
                 <input type="file" name="candidate_photo" class="form-control" required />
             </div>
-            <div class="form-group">
+            <div class="form-group my-3">
                 <input type="text" name="candidate_details" placeholder="Candidate Details" class="form-control" required />
             </div>
             <input type="submit" value="Add Candidate" name="addCandidateBtn" class="btn btn-success" />
