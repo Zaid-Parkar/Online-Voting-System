@@ -20,7 +20,9 @@ body{
     font-size: 62.5%;
 
   }
-  
+  .BGVP{
+    background-color: rgb(156, 153, 153) !important;
+  }
 /* responsiveness */
 
 @media(max-width:400px) {

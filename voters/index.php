@@ -5,7 +5,7 @@
 
     <div class="row my-3 ">
         <div class="col-12">
-            <h3 class="mx-3"> Voters Panel </h3>
+            <h3 class="mx-3" style="text-align: center;">   <b>VOTERS PANEL</b> </h3>
 
             <?php 
                 $fetchingActiveElections = mysqli_query($db, "SELECT * FROM elections WHERE status = 'Active'") or die(mysqli_error($db));
@@ -21,7 +21,7 @@
                         <table class="table ">
                             <thead >
                                 <tr>
-                                    <th colspan="4" class="bg-dark text-white"><h5 class="mx-3"> ELECTION TOPIC: <?php echo strtoupper($election_topic); ?></h5></th>
+                                    <th colspan="4" class=" text-black "style="background-color:rgba(0, 0, 0, 0.2);" ><h5 class="mx-3 "> ELECTION TOPIC: <?php echo strtoupper($election_topic); ?></h5></th>
                                 </tr>
                                 <tr  >
                                     <th><p class="mx-3">Photo</p></th>
