@@ -4,8 +4,8 @@
 ?>
 
 <div class="row my-3">
-        <div class="col-12">
-            <h3> Election Results </h3>
+        <div class="col-12 m-3">
+            <h3 style="text-align:center"> <b>ELECTION RESULTS</b> </h3>
 
             <?php 
                 $fetchingActiveElections = mysqli_query($db, "SELECT * FROM elections WHERE id = '". $election_id ."'") or die(mysqli_error($db));
@@ -65,7 +65,7 @@
 
 
             <hr>
-            <h3>Voting Details</h3>
+            <h3 style="text-align:center"> <b>VOTING DETAILS</b> </h3>
             <?php 
                 $fetchingVoteDetails = mysqli_query($db, "SELECT * FROM votings WHERE election_id = '". $election_id ."'");
                 $number_of_votes = mysqli_num_rows($fetchingVoteDetails);
