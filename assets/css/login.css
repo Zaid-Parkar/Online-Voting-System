@@ -7,8 +7,8 @@
         background:rgba(26, 26, 26, 0.067) !important;
     }
     .user_card {
-        height: 400px;
-        width: 350px;
+        height: 28rem;
+        width: 23rem;
         margin-top: auto;
         margin-bottom: auto;
         background: #f39c12;
@@ -16,31 +16,31 @@
         display: flex;
         justify-content: center;
         flex-direction: column;
-        padding: 10px;
-        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-        -webkit-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-        -moz-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-        border-radius: 5px;
+        padding: 1rem;
+        box-shadow: 0 0.4rem 0.8rem 0 rgba(0, 0, 0, 0.2), 0 0.6rem 2rem 0 rgba(0, 0, 0, 0.19);
+        -webkit-box-shadow: 0 0.4rem 0.8rem 0 rgba(0, 0, 0, 0.2), 0 6px 2rem 0 rgba(0, 0, 0, 0.19);
+        -moz-box-shadow: 0 0.4rem 0.8rem 0 rgba(0, 0, 0, 0.2), 0 0.6rem 2rem 0 rgba(0, 0, 0, 0.19);
+        border-radius: 0.5rem;
 
     }
     .brand_logo_container {
         position: absolute;
-        height: 170px;
-        width: 170px;
-        top: -75px;
+        height: 17rem;
+        width: 17rem;
+        top: -7.5rem;
         border-radius: 50%;
         background: #60a3bc;
-        padding: 10px;
+        padding: 1rem;
         text-align: center;
     }
     .brand_logo {
-        height: 150px;
-        width: 150px;
+        height: 15rem;
+        width: 15rem;
         border-radius: 50%;
-        border: 2px solid white;
+        border: 0.2rem solid white;
     }
     .form_container {
-        margin-top: 100px;
+        margin-top: 10rem;
     }
     .login_btn {
         width: 100%;
@@ -68,3 +68,51 @@
     .custom-checkbox .custom-control-input:checked~.custom-control-label::before {
         background-color: #c0392b !important;
     }
+    .html {
+        font-size: 62.5%;
+    
+      }
+      
+    /* responsiveness */
+    
+    @media(max-width:400px) {
+        html {
+          font-size: 25%;
+        }
+      
+      }
+      
+      @media(min-width:401px) and (max-width:672px) {
+        html {
+          font-size: 35%;
+        }
+      
+      }
+      
+      @media(min-width:673px) and (max-width:768px) {
+        html {
+          font-size: 50%;
+        }
+      
+      }
+      
+      @media(min-width:769px) and (max-width:1000px) {
+        html {
+          font-size: 60%;
+        }
+      
+      }
+      
+      @media(min-width:1001px) and (max-width:1200px) {
+        html {
+          font-size: 70%;
+        }
+     
+      }
+      
+      @media(min-width:1201px) {
+        html {
+          font-size: 100%;
+        }
+      
+      }
