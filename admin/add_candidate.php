@@ -121,7 +121,6 @@ echo '</style>'
                             $fetchingElectionName = mysqli_query($db, "SELECT * FROM elections WHERE id = '". $election_id ."'") or die(mysqli_error($db));
                             $execFetchingElectionNameQuery = mysqli_fetch_assoc($fetchingElectionName);
                             $election_name = $execFetchingElectionNameQuery['election_topic'];
-
                             $candidate_photo = $row['candidate_photo'];
 
                 ?>
