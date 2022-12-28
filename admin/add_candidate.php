@@ -45,7 +45,7 @@ echo '</style>'
 
 <div class="row my-3 mx-2">
     <div class="col-4 ">
-        <h3>Add New Candidates</h3>
+        <h3>ADD NEW CANDIDATES</h3>
         <form method="POST" enctype="multipart/form-data">
             <div class="form-group">
                 <select class="form-control" name="election_id" required> 
@@ -94,8 +94,8 @@ echo '</style>'
     </div>   
 
     <div class="col-8">
-        <h3>Candidate Details</h3>
-        <table class="table">
+        <h3>CANDIDATES DETAILS</h3>
+        <table class="table ">
             <thead>
                 <tr>
                     <th scope="col">S.No</th>
