@@ -34,6 +34,6 @@ if($_SESSION['key'] != "AdminKey")
 <nav class="navbar navbar-dark bg-dark">
   <a class="navbar-brand" href="#" >
     <img src="../assets/images/logo.gif" width="30" height="30" class="d-inline-block align-top" alt="" >
-   <B>WELCOME TO ONLINE VOTING SYSTEM</B>
+    <B>WELCOME TO STUDENT ELECTION SYSTEM</B>
   </a>
 </nav>
