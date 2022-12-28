@@ -25,7 +25,7 @@
 
 <div class="row my-3 mx-2">
     <div class="col-4">
-        <h3>Add New Election</h3>
+        <h3>ADD NEW ELECTION</h3>
         <form method="POST">
             <div class="form- group my-2">
                 <input type="text" name="election_topic" placeholder="Elction Topic" class="form-control" required />
@@ -45,9 +45,9 @@
     </div>
    
     <div class="col -8">
-        <h3>Upcoming Elections </h3>
+        <h3 >UPCOMING ELECTIONS</h3>
 
-        <table class="table">
+        <table class="table ">
             <thead>
                 <tr>
                     <th scope="col">S.No</th>
